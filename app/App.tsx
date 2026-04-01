@@ -12,6 +12,7 @@ import { FutureDirectionSection } from './components/FutureDirectionSection';
 import { GitHubSection } from './components/GitHubSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
+import { ChatbotWidget } from './components/ChatbotWidget';
 
 export default function App() {
   return (
@@ -37,6 +38,7 @@ export default function App() {
 
       {/* Footer */}
       <Footer />
+      <ChatbotWidget />
 
       {/* Global Background Effects */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
