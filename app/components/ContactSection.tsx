@@ -6,9 +6,12 @@ export function ContactSection() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: ''
+    message: '',
+    company: ''
   });
   const [submitMessage, setSubmitMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -17,14 +20,35 @@ export function ContactSection() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`New portfolio message from ${formData.name}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    );
-    window.location.href = `mailto:koomebrian285@gmail.com?subject=${subject}&body=${body}`;
-    setSubmitMessage('Email draft opened. Please click Send in your mail app.');
+    setSubmitMessage('');
+    setSubmitError('');
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          company: formData.company,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Could not submit');
+      }
+
+      setSubmitMessage('Message submitted successfully.');
+      setFormData({ name: '', email: '', message: '', company: '' });
+    } catch {
+      setSubmitError('Submission failed. Please try again in a moment.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -55,6 +79,16 @@ export function ContactSection() {
           >
             <div className="rounded-3xl backdrop-blur-xl bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-white/10 p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
+                <input
+                  type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="hidden"
+                  aria-hidden="true"
+                />
                 {/* Name Input */}
                 <div>
                   <label htmlFor="name" className="block text-gray-300 mb-2 font-medium">
@@ -111,13 +145,17 @@ export function ContactSection() {
                   type="submit"
                   whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(34, 211, 238, 0.5)' }}
                   whileTap={{ scale: 0.98 }}
+                  disabled={isSubmitting}
                   className="w-full px-8 py-4 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all"
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                   <Send className="w-5 h-5" />
                 </motion.button>
                 {submitMessage && (
                   <p className="text-sm text-cyan-300">{submitMessage}</p>
+                )}
+                {submitError && (
+                  <p className="text-sm text-red-300">{submitError}</p>
                 )}
               </form>
             </div>
