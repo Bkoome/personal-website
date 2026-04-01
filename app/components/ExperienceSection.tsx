@@ -100,7 +100,7 @@ export function ExperienceSection() {
                   <ul className={`space-y-2 text-gray-300 ${index % 2 === 0 ? 'md:text-right' : ''}`}>
                     {exp.contributions.map((contribution, i) => (
                       <li key={i} className="text-sm leading-relaxed">
-                        • {contribution}
+                        - {contribution}
                       </li>
                     ))}
                   </ul>
@@ -116,3 +116,4 @@ export function ExperienceSection() {
     </section>
   );
 }
+

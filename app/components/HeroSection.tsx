@@ -78,9 +78,9 @@ export function HeroSection() {
 
       {/* Coordinates Floating Elements */}
       {[
-        { top: '20%', left: '15%', text: '36.8219° S', delay: 0 },
-        { top: '60%', left: '80%', text: '174.7645° E', delay: 1 },
-        { top: '40%', left: '10%', text: '1.2921° S', delay: 2 },
+        { top: '20%', left: '15%', text: '36.8219 deg S', delay: 0 },
+        { top: '60%', left: '80%', text: '174.7645 deg E', delay: 1 },
+        { top: '40%', left: '10%', text: '1.2921 deg S', delay: 2 },
       ].map((coord, index) => (
         <motion.div
           key={index}
@@ -109,7 +109,7 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-white via-cyan-200 to-blue-400 bg-clip-text text-transparent"
           >
-            Brian Koome Kirimi
+            Kirimi Kooome Brian
           </motion.h1>
 
           {/* Tagline with animated role */}

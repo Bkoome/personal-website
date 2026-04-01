@@ -5,6 +5,9 @@ import { ExperienceSection } from './components/ExperienceSection';
 import { ProjectsSection } from './components/ProjectsSection';
 import { MapSection } from './components/MapSection';
 import { SkillsSection } from './components/SkillsSection';
+import { AcademicTrainingSection } from './components/AcademicTrainingSection';
+import { CertificationsSection } from './components/CertificationsSection';
+import { VolunteeringSection } from './components/VolunteeringSection';
 import { FutureDirectionSection } from './components/FutureDirectionSection';
 import { GitHubSection } from './components/GitHubSection';
 import { ContactSection } from './components/ContactSection';
@@ -21,9 +24,12 @@ export default function App() {
         <HeroSection />
         <CoreIdentitySection />
         <ExperienceSection />
+        <AcademicTrainingSection />
         <ProjectsSection />
         <MapSection />
         <SkillsSection />
+        <CertificationsSection />
+        <VolunteeringSection />
         <FutureDirectionSection />
         <GitHubSection />
         <ContactSection />

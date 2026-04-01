@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700">
+  <defs>
+    <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1020" />
+      <stop offset="100%" stop-color="#10223f" />
+    </linearGradient>
+    <linearGradient id="line1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="50%" stop-color="#22d3ee" />
+      <stop offset="100%" stop-color="#60a5fa" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="700" fill="url(#bg1)" />
+  <g opacity="0.15">
+    <path d="M0 560 L1200 560" stroke="#fff" />
+    <path d="M0 420 L1200 420" stroke="#fff" />
+    <path d="M0 280 L1200 280" stroke="#fff" />
+    <path d="M0 140 L1200 140" stroke="#fff" />
+  </g>
+  <polyline fill="none" stroke="url(#line1)" stroke-width="14" points="80,520 230,470 380,500 530,380 680,410 830,280 980,310 1120,220" />
+  <g fill="#22d3ee">
+    <circle cx="230" cy="470" r="10" />
+    <circle cx="530" cy="380" r="10" />
+    <circle cx="830" cy="280" r="10" />
+  </g>
+  <text x="72" y="92" fill="#e6faff" font-size="44" font-family="Arial, sans-serif" font-weight="700">Environmental Indicators Prediction</text>
+  <text x="72" y="136" fill="#9fd3ff" font-size="24" font-family="Arial, sans-serif">NDVI • VCI • SPI time-series analytics</text>
+</svg>

@@ -15,14 +15,16 @@ export function SkillsSection() {
       ]
     },
     {
-      title: "Programming & Backend",
+      title: "Programming & Full Stack",
       icon: <Code className="w-6 h-6" />,
       color: "from-blue-400 to-purple-500",
       skills: [
+        { name: "HTML/CSS/JavaScript", level: 92 },
         { name: "Python", level: 92 },
-        { name: "JavaScript", level: 88 },
+        { name: "Django", level: 85 },
         { name: "Node.js", level: 85 },
-        { name: "C++", level: 78 }
+        { name: "PostgreSQL", level: 90 },
+        { name: "MongoDB", level: 84 }
       ]
     },
     {
@@ -41,8 +43,9 @@ export function SkillsSection() {
       icon: <Database className="w-6 h-6" />,
       color: "from-green-400 to-cyan-500",
       skills: [
+        { name: "Convolutional Neural Networks", level: 88 },
+        { name: "Bayesian Networks", level: 84 },
         { name: "TensorFlow", level: 85 },
-        { name: "PyTorch", level: 82 },
         { name: "PostgreSQL/PostGIS", level: 90 },
         { name: "Computer Vision", level: 88 }
       ]
@@ -135,7 +138,9 @@ export function SkillsSection() {
             {[
               "GDAL", "LiDAR", "Photogrammetry", "GPS/GNSS", "CAD", "Drone Mapping",
               "Spatial Databases", "Web Mapping", "3D Modeling", "Time Series Analysis",
-              "Cloud Computing", "Git", "Docker", "API Development", "Data Visualization"
+              "Cloud Computing", "Git", "Docker", "API Development", "Data Visualization",
+              "Linux Server Maintenance", "KoboToolbox Server Deployment", "Nginx", "Systemd",
+              "S3 Data Pipelines", "ETL Automation", "Environmental Monitoring Dashboards"
             ].map((tech, index) => (
               <motion.span
                 key={index}

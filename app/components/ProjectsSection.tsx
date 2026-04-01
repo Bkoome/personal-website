@@ -19,52 +19,60 @@ export function ProjectsSection() {
   const projects: Project[] = [
     {
       id: 1,
-      title: "Groundwater Modeling & Prediction Engine",
-      description: "SWAT + CA-Markov modeling for predictive simulation of groundwater dynamics",
-      fullDescription: "Advanced hydrological modeling system combining SWAT (Soil and Water Assessment Tool) with CA-Markov cellular automata for predicting groundwater dynamics in the Namukima Sub-Basin (1994-2024). Implemented process interaction analysis to simulate future scenarios and support sustainable water resource management decisions.",
-      tags: ["SWAT", "CA-Markov", "Hydrological Modeling", "Predictive Analytics"],
-      image: "https://images.unsplash.com/photo-1574786577070-70b30e49c99c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzYXRlbGxpdGUlMjBpbWFnZXJ5JTIwYWVyaWFsJTIwdmlld3xlbnwxfHx8fDE3NzQ5NjU5MzV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      title: "Dynamic STAC Platform on S3",
+      description: "Complete STAC stack with Browser, API, TiTiler, TiPG, and live S3 ingestion",
+      fullDescription: "Built a complete dynamic STAC implementation including STAC Browser, STAC API, TiTiler, and TiPG connected to S3 storage. Implemented automated watching and ingestion workflows so new incoming data is processed and published into catalog items for immediate discovery and visualization.",
+      tags: ["STAC API", "STAC Browser", "TiTiler", "TiPG", "S3", "Automation"],
+      image: "/stac.png",
       isFeatured: true
     },
     {
       id: 2,
-      title: "AI Crop Health Detection System",
-      description: "Deep learning-based classification of crop stress using computer vision",
-      fullDescription: "Production-grade AI system for automated crop health assessment using deep learning and computer vision. Trained convolutional neural networks on multispectral imagery to detect nutrient deficiencies, disease stress, and water stress patterns. Achieved 94% classification accuracy across multiple crop types.",
-      tags: ["Deep Learning", "Computer Vision", "TensorFlow", "Remote Sensing"],
-      image: "https://images.unsplash.com/photo-1574786577070-70b30e49c99c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzYXRlbGxpdGUlMjBpbWFnZXJ5JTIwYWVyaWFsJTIwdmlld3xlbnwxfHx8fDE3NzQ5NjU5MzV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+      title: "EcoDashboard for Environmental Monitoring",
+      description: "Operational monitoring dashboard powered directly by the STAC API",
+      fullDescription: "Developed an eco-dashboard for environmental monitoring with STAC-powered data retrieval, temporal comparisons, and quick insights panels. The platform supports decadal and monthly map analytics workflows used for tracking vegetation and climate patterns.",
+      tags: ["Web GIS", "STAC API", "Environmental Monitoring", "Dashboards"],
+      image: "/Eco-dashboard.png"
     },
     {
       id: 3,
-      title: "Smart Farming Drone Intelligence",
-      description: "UAV-based spatial data acquisition and precision agriculture analytics",
-      fullDescription: "Integrated drone data acquisition platform for precision agriculture. Developed automated flight planning, real-time data processing pipelines, and analytics dashboards for crop monitoring, yield estimation, and variable rate application mapping. Reduced field assessment time by 80%.",
-      tags: ["UAV", "Precision Agriculture", "Data Processing", "Analytics"],
-      image: "https://images.unsplash.com/photo-1717343824755-aa0bc935c47c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1cmJhbiUyMHBsYW5uaW5nJTIwY2l0eSUyMG1hcHBpbmd8ZW58MXx8fHwxNzc0OTQwNDc1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+      title: "LULC Classification - Namukima Sub-Basin",
+      description: "Land use/land cover mapping and change analysis for multiple years",
+      fullDescription: "Delivered supervised LULC classification and multi-epoch change analysis for the Namukima Sub-Basin using remote sensing workflows. Produced 1994, 2000, 2012, 2018, and 2024 land cover outputs to support environmental planning and watershed analysis.",
+      tags: ["LULC", "Remote Sensing", "Change Detection", "GIS Analysis"],
+      image: "/lulc.png"
     },
     {
       id: 4,
-      title: "STAC-Based Geospatial Data Platform",
-      description: "API-first architecture for spatiotemporal data access, cloud-ready and scalable",
-      fullDescription: "Enterprise-grade geospatial data platform built on STAC (SpatioTemporal Asset Catalog) specification. Designed RESTful APIs for efficient discovery and access of Earth observation datasets. Implemented cloud-native architecture with PostgreSQL/PostGIS backend, supporting petabyte-scale imagery catalogs.",
-      tags: ["STAC API", "Node.js", "PostGIS", "Cloud Architecture"],
-      image: "https://images.unsplash.com/photo-1634743556192-d19f0c69ff3a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnaXMlMjBtYXBwaW5nJTIwdGVjaG5vbG9neSUyMHNjcmVlbnxlbnwxfHx8fDE3NzQ5NjU5MzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+      title: "Environmental Indicators Prediction",
+      description: "Prediction workflows for NDVI, VCI, and SPI environmental indicators",
+      fullDescription: "Built predictive workflows for environmental indicators including NDVI, VCI, and SPI using historical geospatial data and temporal modeling. Outputs were designed for monitoring drought and vegetation dynamics across seasons.",
+      tags: ["NDVI", "VCI", "SPI", "Prediction Modeling"],
+      image: "/project-indicators.svg"
     },
     {
       id: 5,
-      title: "Interactive GIS Dashboards",
-      description: "Real-time visualization of environmental and spatial datasets",
-      fullDescription: "Production web GIS dashboards for real-time monitoring of environmental parameters. Built with Mapbox GL JS and React, featuring dynamic data layers, time-series visualization, and advanced spatial analytics. Deployed for climate monitoring and disaster response applications.",
-      tags: ["Web GIS", "React", "Mapbox GL JS", "Real-time Data"],
-      image: "https://images.unsplash.com/photo-1736117703416-f260ee174bac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnZW9zcGF0aWFsJTIwZGF0YSUyMHZpc3VhbGl6YXRpb24lMjBtYXB8ZW58MXx8fHwxNzc0OTY1OTM1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+      title: "Burned Area Mapping with SAR",
+      description: "Burn scar detection and mapping using SAR imagery and radar indices",
+      fullDescription: "Implemented SAR-based burned area mapping workflows to detect and monitor post-fire footprints under variable weather and cloud conditions. Delivered spatial outputs suitable for rapid assessment and environmental response planning.",
+      tags: ["SAR", "Burned Area Mapping", "Radar Processing", "Disaster Analytics"],
+      image: "/project-burned-sar.svg"
     },
     {
       id: 6,
-      title: "Land Use Classification (Nyeri Town)",
-      description: "Supervised classification with accuracy assessment and spatial validation",
-      fullDescription: "High-resolution land use classification of Nyeri Town using supervised machine learning on Sentinel-2 imagery. Implemented Random Forest classifier with comprehensive accuracy assessment (overall accuracy: 92%). Generated detailed land use maps for urban planning and environmental monitoring.",
-      tags: ["Machine Learning", "Supervised Classification", "Sentinel-2", "QGIS"],
-      image: "https://images.unsplash.com/photo-1746470427686-4c3551f3d689?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNobm9sb2d5JTIwYWJzdHJhY3QlMjBibHVlJTIwbmV0d29ya3xlbnwxfHx8fDE3NzQ5NjU5MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+      title: "Deformation Monitoring with SAR (InSAR)",
+      description: "Ground deformation analysis using SAR image time series",
+      fullDescription: "Executed deformation monitoring studies using SAR time series to identify and quantify ground movement patterns. Applied interferometric workflows for spatially explicit deformation detection and interpretation.",
+      tags: ["InSAR", "Deformation Monitoring", "SAR Time Series", "Geospatial Analytics"],
+      image: "/project-deformation-sar.svg"
+    },
+    {
+      id: 7,
+      title: "CNN and Bayesian Earth Intelligence Models",
+      description: "Applied CNN and Bayesian network approaches for spatial prediction",
+      fullDescription: "Developed AI workflows combining convolutional neural networks and Bayesian networks for classification and probabilistic inference in environmental and agricultural geospatial tasks.",
+      tags: ["CNN", "Bayesian Networks", "Spatial Prediction", "AI for EO"],
+      image: "/project-cnn-bayesian.svg"
     }
   ];
 

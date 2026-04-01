@@ -32,7 +32,7 @@ export function Footer() {
             className="text-center md:text-left"
           >
             <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent mb-2">
-              Brian Koome Kirimi
+              Kirimi Kooome Brian
             </h3>
             <p className="text-gray-400 text-sm">
               Geospatial Developer | Spatial Data Analyst
@@ -75,7 +75,7 @@ export function Footer() {
           className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400"
         >
           <p className="flex items-center gap-2">
-            © {currentYear} Brian Koome Kirimi. All rights reserved.
+            (c) {currentYear} Kirimi Kooome Brian. All rights reserved.
           </p>
           
           <p className="flex items-center gap-2">
@@ -90,3 +90,4 @@ export function Footer() {
     </footer>
   );
 }
+

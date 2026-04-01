@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { Send, Linkedin, Github, Mail, MapPin, Phone } from 'lucide-react';
+import { Send, Linkedin, Github, Mail, MapPin, Phone, FileText } from 'lucide-react';
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -8,12 +8,23 @@ export function ContactSection() {
     email: '',
     message: ''
   });
+  const [submitMessage, setSubmitMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`New portfolio message from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    window.location.href = `mailto:koomebrian285@gmail.com?subject=${subject}&body=${body}`;
+    setSubmitMessage('Email draft opened. Please click Send in your mail app.');
   };
 
   return (
@@ -43,15 +54,7 @@ export function ContactSection() {
             transition={{ duration: 0.8 }}
           >
             <div className="rounded-3xl backdrop-blur-xl bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-white/10 p-8">
-              <form
-                action="https://formsubmit.co/koomebrian285@gmail.com"
-                method="POST"
-                className="space-y-6"
-              >
-                <input type="hidden" name="_subject" value="New portfolio message" />
-                <input type="hidden" name="_template" value="box" />
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_next" value="https://koome-brian.vercel.app/#contact" />
+              <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name Input */}
                 <div>
                   <label htmlFor="name" className="block text-gray-300 mb-2 font-medium">
@@ -113,6 +116,9 @@ export function ContactSection() {
                   Send Message
                   <Send className="w-5 h-5" />
                 </motion.button>
+                {submitMessage && (
+                  <p className="text-sm text-cyan-300">{submitMessage}</p>
+                )}
               </form>
             </div>
           </motion.div>
@@ -175,29 +181,41 @@ export function ContactSection() {
             <div className="rounded-3xl backdrop-blur-xl bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-white/10 p-8">
               <h3 className="text-2xl font-bold text-white mb-6">Connect With Me</h3>
               
-              <div className="flex gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <motion.a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/kirimi-brian-18b272265/"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -5 }}
                   whileTap={{ scale: 0.95 }}
-                  className="flex-1 p-4 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-400/30 hover:border-blue-400/60 transition-all flex items-center justify-center gap-2 text-blue-400 hover:text-cyan-400"
+                  className="p-4 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-400/30 hover:border-blue-400/60 transition-all flex items-center justify-center gap-2 text-blue-400 hover:text-cyan-400"
                 >
                   <Linkedin className="w-6 h-6" />
                   <span className="font-medium">LinkedIn</span>
                 </motion.a>
 
                 <motion.a
-                  href="https://github.com"
+                  href="https://github.com/Bkoome"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -5 }}
                   whileTap={{ scale: 0.95 }}
-                  className="flex-1 p-4 rounded-xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-purple-400/30 hover:border-purple-400/60 transition-all flex items-center justify-center gap-2 text-purple-400 hover:text-cyan-400"
+                  className="p-4 rounded-xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-purple-400/30 hover:border-purple-400/60 transition-all flex items-center justify-center gap-2 text-purple-400 hover:text-cyan-400"
                 >
                   <Github className="w-6 h-6" />
                   <span className="font-medium">GitHub</span>
+                </motion.a>
+
+                <motion.a
+                  href="https://medium.com/me/following-feed/writers/ce68b4cf6745"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1, y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="p-4 rounded-xl bg-gradient-to-br from-cyan-500/20 to-teal-500/20 border border-cyan-400/30 hover:border-cyan-400/60 transition-all flex items-center justify-center gap-2 text-cyan-300 hover:text-cyan-200"
+                >
+                  <FileText className="w-6 h-6" />
+                  <span className="font-medium">Medium</span>
                 </motion.a>
               </div>
             </div>
