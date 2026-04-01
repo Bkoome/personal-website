@@ -22,17 +22,17 @@ const quickActions: QuickAction[] = [
   {
     label: 'Services',
     answer:
-      'I build geospatial systems, STAC APIs, environmental dashboards, remote sensing analytics, and full-stack GIS applications.',
+      'I build geospatial systems STAC APIs environmental dashboards remote sensing analytics and full-stack GIS applications.',
   },
   {
     label: 'Key Projects',
     answer:
-      'Top projects include a dynamic STAC platform on S3, EcoDashboard monitoring workflows, Namukima LULC classification, and SAR-based analytics.',
+      'Top projects include a dynamic STAC platform on S3 EcoDashboard monitoring workflows Namukima LULC classification and SAR-based analytics.',
   },
   {
     label: 'Hire Me',
     answer:
-      'You can hire me for geospatial development, full-stack GIS engineering, API integration, and environmental intelligence projects.',
+      'You can hire me for geospatial development full-stack GIS engineering API integration and environmental intelligence projects.',
   },
   {
     label: 'Contact',
@@ -44,46 +44,46 @@ const knowledgeBase: KnowledgeItem[] = [
   {
     keywords: ['service', 'services', 'offer', 'what do you do', 'work'],
     answer:
-      'On this site, I focus on geospatial systems engineering, STAC APIs, environmental dashboards, remote sensing analytics, and full-stack GIS development.',
+      'On this site I focus on geospatial systems engineering STAC APIs environmental dashboards remote sensing analytics and full-stack GIS development.',
   },
   {
     keywords: ['project', 'projects', 'portfolio', 'featured'],
     answer:
-      'My featured work here includes Dynamic STAC on S3, EcoDashboard monitoring, Namukima LULC classification, NDVI/VCI/SPI prediction, burned area SAR mapping, and InSAR deformation monitoring.',
+      'My featured work here includes Dynamic STAC on S3 EcoDashboard monitoring Namukima LULC classification NDVI VCI SPI prediction burned area SAR mapping and InSAR deformation monitoring.',
   },
   {
     keywords: ['skills', 'tech', 'stack', 'tools', 'backend', 'frontend'],
     answer:
-      'My stack shown on this site includes HTML/CSS/JavaScript, Python, Django, Node.js, PostgreSQL/PostGIS, MongoDB, Web GIS tooling, and AI approaches including CNN and Bayesian networks.',
+      'My stack shown on this site includes HTML CSS JavaScript Python Django Node.js PostgreSQL PostGIS MongoDB Web GIS tooling and AI approaches including CNN and Bayesian networks.',
   },
   {
     keywords: ['stac', 'titiler', 'tipg', 's3', 'api'],
     answer:
-      'The STAC implementation shown here includes dynamic ingestion from S3, STAC Browser/API integration, TiTiler rendering, and TiPG-backed geospatial services.',
+      'The STAC implementation shown here includes dynamic ingestion from S3 STAC Browser API integration TiTiler rendering and TiPG-backed geospatial services.',
   },
   {
     keywords: ['certification', 'certifications', 'course', 'coursera', 'freecodecamp'],
     answer:
-      'My certifications listed here include Meta Front-End/Back-End, freeCodeCamp tracks, APIs and microservices, PostGIS, SQL/PostgreSQL, and cloud-oriented full stack development.',
+      'My certifications listed here include Meta Front-End and Back-End freeCodeCamp tracks APIs and microservices PostGIS SQL PostgreSQL and cloud-oriented full stack development.',
   },
   {
     keywords: ['volunteer', 'volunteering', 'osm', 'hot', 'unv', 'open source'],
     answer:
-      'My volunteering here includes OpenStreetMap contribution, HOT volunteer GIS work, UNV online volunteering, and open-source geospatial/full-stack contributions on GitHub.',
+      'My volunteering here includes OpenStreetMap contribution HOT volunteer GIS work UNV online volunteering and open-source geospatial full-stack contributions on GitHub.',
   },
   {
     keywords: ['contact', 'email', 'phone', 'hire', 'reach'],
     answer:
-      'You can reach me at koomebrian285@gmail.com or 0705078418, and you can also use the contact form section on this site.',
+      'You can reach me at koomebrian285@gmail.com or 0705078418 and you can also use the contact form section on this site.',
   },
   {
     keywords: ['linkedin', 'github', 'medium', 'social'],
-    answer: 'My social links available here are LinkedIn, GitHub, and Medium in the contact section.',
+    answer: 'My social links available here are LinkedIn GitHub and Medium in the contact section.',
   },
   {
     keywords: ['university', 'academic', 'training', 'coursework'],
     answer:
-      'My academic section includes a full Year 1 to Final Year training timeline covering GIS, surveying, photogrammetry, remote sensing, geodesy, and engineering applications.',
+      'My academic section includes a full Year 1 to Final Year training timeline covering GIS surveying photogrammetry remote sensing geodesy and engineering applications.',
   },
 ];
 
@@ -93,7 +93,7 @@ export function ChatbotWidget() {
     {
       id: 1,
       from: 'bot',
-      text: "Hello, I am Kirimi Kooome Brian's portfolio assistant. Ask me about projects, skills, certifications, or collaboration.",
+      text: "Hello I am Kirimi Kooome Brian's portfolio assistant. Ask me about projects skills certifications or collaboration.",
     },
   ]);
   const [input, setInput] = useState('');
@@ -102,14 +102,25 @@ export function ChatbotWidget() {
 
   const respond = (question: string) => {
     const q = question.toLowerCase();
+    const normalized = q.replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
     const greetings = ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening'];
 
-    if (greetings.some((g) => q.includes(g))) {
-      return "Hello, I am Kirimi Kooome Brian's portfolio assistant. Ask me about my projects, services, skills, or contact options.";
+    if (greetings.some((g) => normalized.includes(g))) {
+      return "Hello. I am Kirimi Kooome Brian's portfolio assistant. Ask me about projects services skills certifications or contact options.";
     }
 
-    if (q.includes('who are you') || q.includes('your name')) {
-      return "I represent Kirimi Kooome Brian's portfolio and can guide you through his geospatial work, technical stack, and collaboration options.";
+    const introMatch = normalized.match(/\b(i am|im|i m|my name is)\s+([a-z0-9]{1,30})\b/);
+    if (introMatch) {
+      const name = introMatch[2].toUpperCase();
+      return `Nice to meet you ${name}. I can walk you through Kirimi Kooome Brian's projects skills and collaboration options on this website.`;
+    }
+
+    if (normalized.includes('who are you') || normalized.includes('your name')) {
+      return "I represent Kirimi Kooome Brian's portfolio and I can guide you through his geospatial work technical stack and collaboration options.";
+    }
+
+    if (normalized.includes('thank you') || normalized.includes('thanks')) {
+      return 'You are welcome. If useful I can show projects skills certifications or contact details.';
     }
 
     let best: { score: number; answer: string } = { score: 0, answer: '' };
@@ -117,14 +128,14 @@ export function ChatbotWidget() {
     for (const item of knowledgeBase) {
       let score = 0;
       for (const keyword of item.keywords) {
-        if (q.includes(keyword)) score += 1;
+        if (normalized.includes(keyword)) score += 1;
       }
       if (score > best.score) best = { score, answer: item.answer };
     }
 
     if (best.score > 0) return best.answer;
 
-    return "Great question. I keep responses focused on this portfolio, so ask me about projects, services, skills, certifications, volunteering, or contact details.";
+    return 'Great question. I keep responses focused on this portfolio. You can ask about projects services skills certifications volunteering or contact details.';
   };
 
   const sendUserMessage = (text: string) => {
