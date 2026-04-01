@@ -8,43 +8,6 @@ export function ContactSection() {
     email: '',
     message: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-
-    try {
-      const response = await fetch('https://formsubmit.co/ajax/koomebrian285@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-          _subject: `New portfolio message from ${formData.name}`,
-          _template: 'box',
-          _captcha: 'false',
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Request failed');
-      }
-
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-    } catch {
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -80,7 +43,15 @@ export function ContactSection() {
             transition={{ duration: 0.8 }}
           >
             <div className="rounded-3xl backdrop-blur-xl bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-white/10 p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form
+                action="https://formsubmit.co/koomebrian285@gmail.com"
+                method="POST"
+                className="space-y-6"
+              >
+                <input type="hidden" name="_subject" value="New portfolio message" />
+                <input type="hidden" name="_template" value="box" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_next" value="https://koome-brian.vercel.app/#contact" />
                 {/* Name Input */}
                 <div>
                   <label htmlFor="name" className="block text-gray-300 mb-2 font-medium">
@@ -137,23 +108,11 @@ export function ContactSection() {
                   type="submit"
                   whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(34, 211, 238, 0.5)' }}
                   whileTap={{ scale: 0.98 }}
-                  disabled={isSubmitting}
                   className="w-full px-8 py-4 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all"
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  Send Message
                   <Send className="w-5 h-5" />
                 </motion.button>
-
-                {submitStatus === 'success' && (
-                  <p className="text-sm text-green-400">
-                    Message sent successfully.
-                  </p>
-                )}
-                {submitStatus === 'error' && (
-                  <p className="text-sm text-red-400">
-                    Failed to send message. Please try again.
-                  </p>
-                )}
               </form>
             </div>
           </motion.div>

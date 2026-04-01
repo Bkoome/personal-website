@@ -14,16 +14,6 @@ export function ExperienceSection() {
       ]
     },
     {
-      role: "Attachment",
-      organization: "ICPAC (IGAD Climate Prediction and Applications Centre)",
-      duration: "June 2024 - Aug 2024",
-      contributions: [
-        "Worked on climate data systems and geospatial processing pipelines",
-        "Assisted in development of spatial analytics tools",
-        "Contributed to Earth observation data integration projects"
-      ]
-    },
-    {
       role: "GIS Intern",
       organization: "National Water Storage and Harvesting Authority",
       duration: "Jan 2024 - April 2024",

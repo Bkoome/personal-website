@@ -89,7 +89,11 @@ export function MapSection() {
                   ))}
 
                   {/* Decorative Lines */}
-                  <svg className="absolute inset-0 w-full h-full">
+                  <svg
+                    className="absolute inset-0 w-full h-full"
+                    viewBox="0 0 100 100"
+                    preserveAspectRatio="none"
+                  >
                     <defs>
                       <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                         <stop offset="0%" stopColor="rgba(34, 211, 238, 0)" />
@@ -98,7 +102,7 @@ export function MapSection() {
                       </linearGradient>
                     </defs>
                     <motion.path
-                      d="M 35% 30% Q 50% 50%, 50% 55%"
+                      d="M 35 30 Q 50 50, 50 55"
                       stroke="url(#lineGradient)"
                       strokeWidth="2"
                       fill="none"
@@ -108,7 +112,7 @@ export function MapSection() {
                       transition={{ duration: 1.5, delay: 0.5 }}
                     />
                     <motion.path
-                      d="M 50% 55% Q 60% 70%, 65% 80%"
+                      d="M 50 55 Q 60 70, 65 80"
                       stroke="url(#lineGradient)"
                       strokeWidth="2"
                       fill="none"
